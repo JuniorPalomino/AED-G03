@@ -38,6 +38,7 @@ class DemoMetodoGenerico {
         //if(igualArrays(nums,dvals)) //C
         // System.out.println("nums es igual a dvals"); //D
         
-        //RPTA : 
+        //RPTA : //Punto 6: Respecto al punto 6 no se puede realizar porque los valores ingresador al metodo igualArrays son de diferentes tipos, uno es integer y otro es double
+        //Necesitan ser de tipos iguales ambos arreglos que van a ser ingresados como parametros para el metodo igualArrays
     }
 }
