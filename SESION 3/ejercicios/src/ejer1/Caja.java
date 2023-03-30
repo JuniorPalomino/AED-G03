@@ -16,5 +16,22 @@ public class Caja<T> {
     public Caja(){
         super();
     }
+
+    public T getCualquierObjeto() {
+        return CualquierObjeto;
+    }
+
+    public String getColor() {
+        return Color;
+    }
+
+    public void setCualquierObjeto(T CualquierObjeto) {
+        this.CualquierObjeto = CualquierObjeto;
+    }
+
+    public void setColor(String Color) {
+        this.Color = Color;
+    }
+    
     
 }
