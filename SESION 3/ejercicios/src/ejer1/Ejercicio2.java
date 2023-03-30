@@ -2,7 +2,7 @@
 package ejer1;
 
 public class Ejercicio2 {
-    static <T extends Comparable<T>> void mostrarBolsa(Bolsa<Golosina> x) {
+    static <T> void mostrarBolsa(Bolsa<T> x) {
 
         for (int i = 0; i < x.getLista().size(); i++) {
                 System.out.println(x.getLista().get(i));

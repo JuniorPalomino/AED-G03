@@ -1,5 +1,7 @@
 package ejer1;
 
+import java.util.Objects;
+
 public class Golosina {
 
     private String nombre;
@@ -24,6 +26,30 @@ public class Golosina {
 
     public void setPeso(double peso) {
         this.peso = peso;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Golosina other = (Golosina) obj;
+        if (Double.doubleToLongBits(this.peso) != Double.doubleToLongBits(other.peso)) {
+            return false;
+        }
+        return Objects.equals(this.nombre, other.nombre);
     }
 
     @Override
