@@ -1,20 +1,14 @@
 package ejer1;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+import java.util.Objects;
 
-/**
- *
- * @author H P
- */
 public class Caja<T> {
     
     private T CualquierObjeto;
     private String Color;
-    public Caja(){
-        super();
+    public Caja(String color, T obj){
+        this.CualquierObjeto=obj;
+        this.Color=color;
     }
 
     public T getCualquierObjeto() {
@@ -31,6 +25,30 @@ public class Caja<T> {
 
     public void setColor(String Color) {
         this.Color = Color;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Caja<?> other = (Caja<?>) obj;
+        if (!Objects.equals(this.Color, other.Color)) {
+            return false;
+        }
+        return Objects.equals(this.CualquierObjeto, other.CualquierObjeto);
     }
     
     
