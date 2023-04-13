@@ -2,27 +2,6 @@ package Act2;
 
 public class TestSort {
 
-    
-    public static void main(String[] args) {
-        int[] lista = {35, 56, 31, 8, 57, 64, 74, 82, 62, 13, 50, 63, 21};
-        
-        System.out.println("Lista ordenada BURBUJA: ");
-        TestSort.showArray(burbuja(lista));
-        
-        System.out.println("Lista ordenada INSERCION: ");
-        TestSort.showArray(insercion(lista));
-        
-        System.out.println("Lista ordenada QUICKSORT: ");
-        TestSort.showArray(quicksort(lista,0, lista.length - 1));
-        
-        System.out.println("Lista ordenada SELECCION: ");
-        TestSort.showArray(seleccion(lista));
-        
-        System.out.println("Lista ordenada SHELL: ");
-        TestSort.showArray(shell(lista));
-        
-    }
-    
     public static void showArray(int[] lista) {
         for (int i = 0; i < lista.length; i++) {
             System.out.print(lista[i] + " ");
