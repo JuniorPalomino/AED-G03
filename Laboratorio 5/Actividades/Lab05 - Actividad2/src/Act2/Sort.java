@@ -96,4 +96,26 @@ public class Sort {
         TestSort.showArray(a);
     }
 
+    public static void quickSort(int a[], int l, int r){
+        int i = l;
+        int j = r;
+        int pivot = a[(l+r)/2];
+        do{
+            while(a[i]<pivot) i++;
+            while(pivot < a[j]) j--;
+            if(i<=j){
+                int aux = a[i];
+                a[i] = a[j];
+                a[j] = aux;
+            }
+            i++;
+            j--;
+        }while(i<=j);
+        if(l<j){
+            quickSort(a, l, j);
+        }
+        if(i<r){
+            quickSort(a,i,r);
+        }
+    }
 }

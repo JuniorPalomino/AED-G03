@@ -44,9 +44,12 @@ public class main {
         
         System.out.println("Lista ordenada selectionSort: ");
         Sort.selectionSort(lista);
-         */
+         
         System.out.println("Lista ordenada shellSort: ");
         Sort.shellSort(lista);
+*/
+        System.out.println("Lista ordenada quickSort: ");
+        Sort.quickSort(lista, 1, lista.length);
     }
 
 }
