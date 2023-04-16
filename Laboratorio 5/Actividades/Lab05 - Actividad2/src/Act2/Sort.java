@@ -33,10 +33,9 @@ public class Sort {
             }
 
         }
-        
+
         TestSort.showArray(a);
-        
-       
+
     }
 
     public static void insertionSort(int a[]) {
@@ -57,12 +56,44 @@ public class Sort {
             a[j] = aux;
 
         }
-        
+
         TestSort.showArray(a);
-        
 
     }
-   
-    
+
+    public static void selectionSort(int a[]) {
+        int min;
+        for (int i = 0; i < a.length - 1; i++) {
+            min = i;
+            for (int j = i + 1; j < a.length; j++) {
+                if (a[min] > a[j]) {
+                    min = j;
+                }
+            }
+            int aux = a[min];
+            a[min] = a[i];
+            a[i] = aux;
+        }
+        TestSort.showArray(a);
+    }
+
+    public static void shellSort(int a[]) {
+        int interval = a.length / 2;
+        int i, j, aux;
+
+        while (interval > 0) {
+            for (i = interval; i < a.length; i++) {
+                j = i;
+                aux = a[i];
+                while ((j >= interval) && (a[j - interval] > aux)) {
+                    a[j] = a[j - interval];
+                    j = j - interval;
+                }
+                a[j] = aux;
+            }
+            interval = interval / 2;
+        }
+        TestSort.showArray(a);
+    }
 
 }

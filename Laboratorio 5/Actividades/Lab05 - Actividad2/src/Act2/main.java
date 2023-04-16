@@ -16,11 +16,11 @@ import static Act2.Sort.bubbleSort;
  * @author H P
  */
 public class main {
-    
-     public static void main(String[] args) {
+
+    public static void main(String[] args) {
         int[] lista = {35, 56, 31, 8, 57, 64, 74, 82, 62, 13, 50, 63, 21};
-        
-       /*
+
+        /*
         System.out.println("Lista ordenada BURBUJA: ");
         TestSort.showArray(burbuja(lista));
         
@@ -36,14 +36,17 @@ public class main {
         System.out.println("Lista ordenada SHELL: ");
         TestSort.showArray(shell(lista));
         
-        
         System.out.println("Lista ordenada bubbleSort: ");
         Sort.bubbleSort(lista);
-        */
         
-       System.out.println("Lista ordenada insertionSort: ");
+        System.out.println("Lista ordenada insertionSort: ");
         Sort.insertionSort(lista);
         
+        System.out.println("Lista ordenada selectionSort: ");
+        Sort.selectionSort(lista);
+         */
+        System.out.println("Lista ordenada shellSort: ");
+        Sort.shellSort(lista);
     }
-    
+
 }
