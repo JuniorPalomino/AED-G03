@@ -33,6 +33,10 @@ public class Sort {
             }
 
         }
+        
+        TestSort.showArray(a);
+        
+       
     }
 
     public static void insertionSort(int a[]) {
@@ -53,6 +57,12 @@ public class Sort {
             a[j] = aux;
 
         }
+        
+        TestSort.showArray(a);
+        
+
     }
+   
+    
 
 }
