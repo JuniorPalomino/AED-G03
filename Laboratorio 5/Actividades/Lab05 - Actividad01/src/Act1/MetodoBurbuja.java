@@ -10,7 +10,8 @@ package Act1;
  */
 public class MetodoBurbuja {
 
-    public static int[] burbuja(int[] x) {
+    public static void burbuja(int[] x) {
+        int count = 1;
         for (int i = 0; i < x.length - 1; i++) {
             for (int j = 0; j < x.length - i - 1; j++) {
                 if (x[j] > x[j + 1]) {
@@ -18,20 +19,24 @@ public class MetodoBurbuja {
                     x[j] = x[j + 1];
                     x[j + 1] = temp;
                 }
-            }
-        }
 
-        return x;
+            }
+            
+            System.out.println("PASADA : " + count++);
+            for (int l = 0; l < x.length; l++) {
+                
+                System.out.print(x[l] + " ");
+            }
+            System.out.println("");
+
+        }
 
     }
-    
+
     public static void main(String[] args) {
         int[] lista = {35, 56, 31, 8, 57, 64, 74, 82, 62, 13, 50, 63, 21};
-        int[] rpt = burbuja(lista);
-        System.out.println("Lista ordenada: ");
-        for(int i = 0; i < rpt.length; i++) {
-            System.out.print(rpt[i] + " ");
-        }
-        System.out.println("");
+
+        burbuja(lista);
+
     }
 }
