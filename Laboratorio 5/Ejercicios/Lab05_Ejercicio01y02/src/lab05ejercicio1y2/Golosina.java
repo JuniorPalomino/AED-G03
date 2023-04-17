@@ -48,7 +48,7 @@ public class Golosina implements Comparable<Golosina> {
 
     @Override
     public int compareTo(Golosina otraGolosina) {
-        return Double.compare(this.peso, otraGolosina.getPeso());
+        return Double.compare(this.peso, otraGolosina.getPeso());   //compara segun el peso
     }
 
     @Override
