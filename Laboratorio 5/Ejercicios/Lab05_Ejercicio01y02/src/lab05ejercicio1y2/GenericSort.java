@@ -1,5 +1,7 @@
 package lab05ejercicio1y2;
 
+import java.util.Arrays;
+
 public class GenericSort {
 
     public static <T extends Comparable<T>> void bubbleSort(T[] a) {
@@ -114,6 +116,39 @@ public class GenericSort {
         }
         if (i < r) {
             quickSort(a, i, r);
+        }
+    }
+
+    public static <T extends Comparable<T>> void mergeSort(T[] A, int izq, int der) {
+        if (izq < der) {
+            int m = (izq + der) / 2;
+            mergeSort(A, izq, m);
+            mergeSort(A, m + 1, der);
+            merge(A, izq, m, der);
+        }
+    }
+
+    private static <T extends Comparable<T>> void merge(T[] A, int izq, int m, int der) {
+        int i, j, k;
+        T[] B = Arrays.copyOf(A, A.length);
+        for (i = izq; i <= der; i++) {
+            B[i] = A[i];
+        }
+
+        i = izq;
+        j = m + 1;
+        k = izq;
+
+        while (i <= m && j <= der) {
+            if (B[i].compareTo(B[j]) <= 0) {
+                A[k++] = B[i++];
+            } else {
+                A[k++] = B[j++];
+            }
+        }
+
+        while (i <= m) {
+            A[k++] = B[i++];
         }
     }
 
