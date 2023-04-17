@@ -49,7 +49,7 @@ public class main {
         Sort.shellSort(lista);
 */
         System.out.println("Lista ordenada quickSort: ");
-        Sort.quickSort(lista, 1, lista.length);
+        Sort.quickSort(lista, 0, lista.length-1);
     }
 
 }

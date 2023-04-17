@@ -117,5 +117,6 @@ public class Sort {
         if(i<r){
             quickSort(a,i,r);
         }
+        TestSort.showArray(a);
     }
 }
