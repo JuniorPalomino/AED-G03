@@ -10,10 +10,14 @@ package lab06.actividades;
  */
 public class ListArray<T> implements TDAList<T> {
     T[] dato;
-    
+
     public ListArray(T[] dato) {
         this.dato = dato;
     }
+    public ListArray() {
+       
+    }
+   
     
     @Override
     public boolean isEmptyList() {
@@ -38,7 +42,7 @@ public class ListArray<T> implements TDAList<T> {
     }
 
     @Override
-    public int search(Object x) {
+    public int search(T x) {
         for (int i = 0; i < dato.length; i++) {
             if (dato[i] == x) {
                 System.out.println("Se encontro:" + x);
@@ -50,34 +54,97 @@ public class ListArray<T> implements TDAList<T> {
     }
 
     @Override
-    public void insertFirst(Object x) {
+    public void insertFirst(T x) {
         int rango = dato.length;
         if (isEmptyList()) {
-            dato[0] = (T) x;
+            dato[0] =  x;
         } else {
-            for (int i = 0; i < dato.length; i++) {
+            for (int i = 0; i < dato.length-1; i++) {
                 if (dato[i] == null) {
                     System.out.println("Hay un espacio");
                     if (dato[i] == dato[0]) {
-                        dato[0] = (T) x;
+                        dato[0] = x;
                     } else {
                         dato[i] = dato[0];
-                        dato[0] = null;
-                        dato[0] = (T) x;
+                        //dato[0] = null;
+                        dato[0] =  x;
                     }
                 }
             }
+            
+            System.out.println("Lista llena"); 
+            
         }
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
     }
 
     @Override
-    public void insertLast(Object x) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void insertLast(T x) {
+        int rango = dato.length-1;
+        int mayor = dato.length-1;
+        
+        if (isEmptyList()) {
+            dato[0] = x;
+        } else {
+            /*
+            if(dato[dato.length-1]!=null)
+                dato[dato.length-1]=x;
+            else{
+                for(int i = 0;i<dato.length;i++)
+                {
+                    if(dato[i]==null)
+                        dato[i]=x;
+                    break;
+            }
+            */
+            
+            for (int i = rango; 0 == i; i--) {
+                if (dato[i] == null) {
+                    System.out.println("Hay un espacio");
+                    if (dato[i] == dato[rango]) {
+                        dato[rango] = x;
+                    } else {
+                        dato[i] = dato[rango];
+                        //dato[mayor] = null;
+                        dato[rango] = x;
+                    }
+                }
+                
+             System.out.println("Lista llena");   
+              
+            }
+            
+        }
     }
 
     @Override
-    public void removeNode(Object x) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void removeNode(T x) {
+        
+        if (isEmptyList()) {
+            System.out.println("Lista Vacia, no se puede eliminar");
+        } else {
+            for (int i = 0; i < dato.length; i++) {
+                if (dato[i] == x) {
+                    dato[i]=null;
+                    System.out.println("Se borro el dato");
+                   
+                }
+            }
+        }
+        
     }
+
+    @Override
+    public String toString() {
+        
+         String Cadena="";
+         for (int i = 0; i < dato.length; i++) {
+            Cadena+=dato[i];
+             System.out.println(Cadena);
+            }
+        return Cadena;
+    }
+    
+    
+    
 }

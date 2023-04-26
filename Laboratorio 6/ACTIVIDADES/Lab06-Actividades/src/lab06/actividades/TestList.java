@@ -11,6 +11,23 @@ package lab06.actividades;
 public class TestList {
 
     public static void main(String[] args) {
+        
+        
+        Integer[] arr1=new Integer[3];
+        
+        ListArray<Integer> L1=new ListArray<Integer>(arr1);
+        
+        L1.insertFirst(2);
+        L1.insertFirst(3);
+        L1.insertFirst(4);
+        L1.insertLast(6);
+        System.out.println(L1.toString());
+        
+        
+        
+        
+        /*
+        
         ListLinked myList = new ListLinked();
 
         myList.insertFirst(1);
@@ -30,5 +47,7 @@ public class TestList {
         myList.destroyList();
         int numNodes2 = myList.length();
         System.out.println("Numero de nodos en la lista: " + numNodes2);
+
+*/
     }
 }
