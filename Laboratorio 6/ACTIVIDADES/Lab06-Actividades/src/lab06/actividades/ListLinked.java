@@ -38,7 +38,7 @@ public class ListLinked<T> implements TDAList<T> {
 
         Node<T> n = first;
         while (n.getNext() != null) {
-            if (n.getData() == x) {
+            if (n.getData().equals(x)) {
                 System.out.println("ENCONTRADO: ");
                 return (int) x;
             }
@@ -89,7 +89,7 @@ public class ListLinked<T> implements TDAList<T> {
 
         Node n = first;
         while (n.getNext() != null) {
-            if (n.getNext() == newNode) {
+            if (n.getNext().equals(newNode)) {
                 n.setNext(newNode.getNext());
                 size--;
                 return;
