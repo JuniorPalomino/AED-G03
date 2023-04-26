@@ -15,6 +15,7 @@ public class Lab06Actividades {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        
     }
-    
+
 }
