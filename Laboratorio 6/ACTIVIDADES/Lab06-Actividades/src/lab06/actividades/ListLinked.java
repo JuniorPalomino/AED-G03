@@ -106,8 +106,8 @@ public class ListLinked<T> implements TDAList<T> {
             System.out.println("No hay nodos");
             return null;
         } else {
-            Node n = first;
-            while (n.getNext() != null) {
+            Node<T> n = first;
+            while (n != null) {
                 System.out.println("Nodo: " + n.getNext()
                         + "\nData: " + n.getData());
                 n = n.getNext();
