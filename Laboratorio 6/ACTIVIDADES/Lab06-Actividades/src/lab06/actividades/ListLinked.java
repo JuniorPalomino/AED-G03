@@ -47,7 +47,7 @@ public class ListLinked<T> implements TDAList<T> {
             n = n.getNext();
         }
         System.out.println("NO ENCONTRADO");
-        throw new ClassCastException("La variable no es de tipo int");
+        return -1;
     }
 
     @Override
@@ -91,8 +91,8 @@ public class ListLinked<T> implements TDAList<T> {
 
         Node n = first;
         while (n.getNext() != null) {
-            if (n.getNext().equals(newNode)) {
-                n.setNext(newNode.getNext());
+            if (n.getNext().getData().equals(newNode.getData())) {
+                n.setNext(n.getNext().getNext());
                 size--;
                 return;
             }
@@ -103,18 +103,19 @@ public class ListLinked<T> implements TDAList<T> {
 
     @Override
     public String toString() {
-
+        String x="";
         if (first == null) {
             System.out.println("No hay nodos");
             return null;
         } else {
             Node<T> n = first;
+            
             while (n != null) {
                 System.out.println("Nodo: " + n
-                        + "\nData: " + n.getData());
+                        + "\tData: " + n.getData());
                 n = n.getNext();
             }
-            return null;
+            return x;
         }
     }
 

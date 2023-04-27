@@ -1,5 +1,7 @@
 package lab06.actividades;
 
+import java.util.Objects;
+
 public class Person {
     String nombre;
     String apellidos;
@@ -35,6 +37,38 @@ public class Person {
         this.edad = edad;
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 37 * hash + Objects.hashCode(this.nombre);
+        hash = 37 * hash + Objects.hashCode(this.apellidos);
+        hash = 37 * hash + this.edad;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Person other = (Person) obj;
+        if (this.edad != other.edad) {
+            return false;
+        }
+        if (!Objects.equals(this.nombre, other.nombre)) {
+            return false;
+        }
+        return Objects.equals(this.apellidos, other.apellidos);
+    }
+
+    
+    
     @Override
     public String toString() {
         return "Person{" + "nombre=" + nombre + ", apellidos=" + apellidos + ", edad=" + edad + '}';

@@ -9,16 +9,17 @@ package lab06.actividades;
  * @author Alumno
  */
 public class ListArray<T> implements TDAList<T> {
+
     T[] dato;
 
     public ListArray(T[] dato) {
         this.dato = dato;
     }
+
     public ListArray() {
-       
+
     }
-   
-    
+
     @Override
     public boolean isEmptyList() {
         for (int i = 0; i < dato.length; i++) {
@@ -28,7 +29,7 @@ public class ListArray<T> implements TDAList<T> {
         }
         return true;
     }
-    
+
     @Override
     public int length() {
         return dato.length;
@@ -44,107 +45,98 @@ public class ListArray<T> implements TDAList<T> {
     @Override
     public int search(T x) {
         for (int i = 0; i < dato.length; i++) {
-            if (dato[i] == x) {
+            if (dato[i].equals(x)) {
                 System.out.println("Se encontro:" + x);
-                return (int) x;
+                return i;
             }
         }
         System.out.println("No se encontro:" + x);
-        return (int) x;
+        return -1;
     }
 
     @Override
     public void insertFirst(T x) {
-        int rango = dato.length;
+        int rango = dato.length - 1;
         if (isEmptyList()) {
-            dato[0] =  x;
+            dato[0] = x;
         } else {
-            for (int i = 0; i < dato.length-1; i++) {
-                if (dato[i] == null) {
-                    System.out.println("Hay un espacio");
-                    if (dato[i] == dato[0]) {
+            for (int i = 0; i <= rango; i++) {
+                System.out.println("indice " + i);
+                if (dato[i] == null) {                      //valida si hay un espacio nulo
+                    if (i == 0) {                           //verifica si el elemento en el que estamos es nulo
                         dato[0] = x;
-                    } else {
+                        break;
+                    } else {                                //se realiza el cambio
+
                         dato[i] = dato[0];
-                        //dato[0] = null;
-                        dato[0] =  x;
+                        dato[0] = x;
+                        break;
                     }
                 }
             }
-            
-            System.out.println("Lista llena"); 
-            
+
+            //System.out.println("Lista llena"); 
         }
-        
+
     }
 
     @Override
     public void insertLast(T x) {
-        int rango = dato.length-1;
-        int mayor = dato.length-1;
-        
+        int rango = dato.length - 1;
+        int mayor = dato.length - 1;
+
         if (isEmptyList()) {
-            dato[0] = x;
+            dato[mayor] = x;
         } else {
-            /*
-            if(dato[dato.length-1]!=null)
-                dato[dato.length-1]=x;
-            else{
-                for(int i = 0;i<dato.length;i++)
-                {
-                    if(dato[i]==null)
-                        dato[i]=x;
-                    break;
-            }
-            */
-            
-            for (int i = rango; 0 == i; i--) {
+            for (int i = rango; i >= 0; i--) {
+                System.out.println("indice " + i);
                 if (dato[i] == null) {
-                    System.out.println("Hay un espacio");
-                    if (dato[i] == dato[rango]) {
-                        dato[rango] = x;
+                    System.out.println("Hay un espacio en la posicion " + i);
+                    if (i == mayor) {
+                        dato[mayor] = x;
+                        break;
                     } else {
+                        System.out.println("cambio");
                         dato[i] = dato[rango];
                         //dato[mayor] = null;
                         dato[rango] = x;
+                        break;
                     }
                 }
-                
-             System.out.println("Lista llena");   
-              
+
+                // System.out.println("Lista llena");   
             }
-            
+
         }
     }
 
     @Override
     public void removeNode(T x) {
-        
+
         if (isEmptyList()) {
             System.out.println("Lista Vacia, no se puede eliminar");
         } else {
             for (int i = 0; i < dato.length; i++) {
-                if (dato[i] == x) {
-                    dato[i]=null;
+                if(dato[i]!=null){
+                if (dato[i].equals(x)) {
+                    dato[i] = null;
                     System.out.println("Se borro el dato");
-                   
+                    break;
                 }
+                }
+
             }
         }
-        
     }
 
     @Override
     public String toString() {
-        
-         String Cadena="";
-         for (int i = 0; i < dato.length; i++) {
-            Cadena+=dato[i];
-             System.out.println(Cadena);
-            }
+
+        String Cadena = "";
+        for (int i = 0; i < dato.length; i++) {
+            Cadena += dato[i] +" ";
+        }
         return Cadena;
     }
-    
-    
-    
+
 }
