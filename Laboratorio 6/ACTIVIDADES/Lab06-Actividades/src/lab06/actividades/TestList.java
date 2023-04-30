@@ -1,13 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package lab06.actividades;
 
-/**
- *
- * @author Alumno
- */
 public class TestList {
 
     public static void main(String[] args) {
@@ -18,8 +11,8 @@ public class TestList {
         System.out.println(L1.length()) ;
         L1.insertFirst(2);
         L1.insertLast(8);
-        //L1.destroyList();
-        //L1.search(5);
+        L1.insertLast(16);
+        L1.search(2);
         L1.removeNode(8);
         System.out.println(L1.toString());
         System.out.println("==================================================================================");
@@ -28,11 +21,8 @@ public class TestList {
         ListArray <Person> arrayPerson = new ListArray<>(p);
         arrayPerson.insertFirst(new Person("Luis", "Perez", 20));
         arrayPerson.insertFirst(new Person("Bill", "Gates", 60));
-        System.out.println(arrayPerson);
         arrayPerson.insertFirst(new Person("Lucas", "Garcia", 30));
-        System.out.println(arrayPerson);
         arrayPerson.insertLast(new Person("Maria", "Gonzales", 25));
-        System.out.println(arrayPerson);
         arrayPerson.search(new Person("Maria", "Gonzales", 25));
         arrayPerson.removeNode(new Person("Luis", "Perez", 20));
         System.out.println(arrayPerson);
