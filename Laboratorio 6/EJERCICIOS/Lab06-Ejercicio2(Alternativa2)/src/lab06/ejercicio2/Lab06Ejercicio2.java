@@ -16,11 +16,11 @@ public class Lab06Ejercicio2 {
     public static void main(String[] args) {
         // TODO code application logic here
         
-        Node head= new Node('D');
+        Node head= new Node('A');
         head.next= new Node('B');
         head.next.next= new Node('C');
         head.next.next.next= new Node('B');
-        head.next.next.next.next= new Node('D');
+        head.next.next.next.next= new Node('A');
         
         NodeWrapper left= new NodeWrapper(head);
         
@@ -51,20 +51,22 @@ public class Lab06Ejercicio2 {
     public static boolean isPalindrome(NodeWrapper left, Node right) {
         // TODO code application logic here
 
-        if (right == null) {
-            return true;
+        if (right == null) {        //O(1)
+            return true;            //O(1)    
         }
 
-        if (!isPalindrome(left, right.next)) {
-            return false;
+        if (!isPalindrome(left, right.next)) {      //O(n)
+            return false;       //O(1)
 
         }
 
-        Node prev_left = left.node;
+        Node prev_left = left.node;     //O(1)
 
-        left.node = left.node.next;
+        left.node = left.node.next;     //O(1)
 
-        return (prev_left.data== right.data);
+        return (prev_left.data== right.data);   //O(1)
+        
+        
 
     }
     

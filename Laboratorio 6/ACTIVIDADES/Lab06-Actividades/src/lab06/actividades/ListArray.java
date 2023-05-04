@@ -22,8 +22,8 @@ public class ListArray<T> implements TDAList<T> {
 
     @Override
     public boolean isEmptyList() {
-        for (int i = 0; i < dato.length; i++) {
-            if (dato[i] != null) {
+        for (int i = 0; i < dato.length; i++) {         //O(n)
+            if (dato[i] != null) {                      //O(1)
                 return false;
             }
         }
@@ -56,11 +56,11 @@ public class ListArray<T> implements TDAList<T> {
 
     @Override
     public void insertFirst(T x) {
-        int rango = dato.length - 1;
-        if (isEmptyList()) {
-            dato[0] = x;
+        int rango = dato.length - 1;            //O(1)
+        if (isEmptyList()) {                    //O(n)
+            dato[0] = x;                        //O(1)
         } else {
-            for (int i = 0; i <= rango; i++) {
+            for (int i = 0; i <= rango; i++) {  //O(n)
                 System.out.println("indice " + i);
                 if (dato[i] == null) {                      //valida si hay un espacio nulo
                     if (i == 0) {                           //verifica si el elemento en el que estamos es nulo
@@ -89,14 +89,14 @@ public class ListArray<T> implements TDAList<T> {
             dato[mayor] = x;
         } else {
             for (int i = rango; i >= 0; i--) {
-                System.out.println("indice " + i);
+                //System.out.println("indice " + i);
                 if (dato[i] == null) {
-                    System.out.println("Hay un espacio en la posicion " + i);
+                    //System.out.println("Hay un espacio en la posicion " + i);
                     if (i == mayor) {
                         dato[mayor] = x;
                         break;
                     } else {
-                        System.out.println("cambio");
+                      //  System.out.println("cambio");
                         dato[i] = dato[rango];
                         //dato[mayor] = null;
                         dato[rango] = x;

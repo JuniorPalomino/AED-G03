@@ -17,9 +17,9 @@ public class Lab06Ejercicio2Alternativa1 {
         // TODO code application logic here
 
         Node head = new Node('A');
-        head.next = new Node('F');
+        head.next = new Node('B');
         head.next.next = new Node('C');
-        head.next.next.next = new Node('f');
+        head.next.next.next = new Node('B');
         head.next.next.next.next = new Node('A');
 
         if (isPalindrome(head)) {
@@ -30,24 +30,24 @@ public class Lab06Ejercicio2Alternativa1 {
 
     }
 
-    public static void construct(Node head, StringBuilder s1, StringBuilder s2) {
-        if (head == null) {
+    public static void construct(Node head, StringBuilder s1, StringBuilder s2) {           //O(n)
+        if (head == null) {                 //O(1)    
 
             return;
 
         }
-        s1.append(head.data);
-        construct(head.next, s1, s2);
-        s2.append(head.data);
+        s1.append(head.data);               //O(1)
+        construct(head.next, s1, s2);     //O(n)
+        s2.append(head.data);               //O(1)
 
     }
 
-    public static boolean isPalindrome(Node head) {
+    public static boolean isPalindrome(Node head) {                     //O(n)
 
-        StringBuilder s1 = new StringBuilder(), s2 = new StringBuilder();
-        construct(head, s1, s2);
+        StringBuilder s1 = new StringBuilder(), s2 = new StringBuilder();   //O(1)
+        construct(head, s1, s2);                                            //O(n)
 
-        return s1.toString().equals(s2.toString());
+        return s1.toString().equals(s2.toString());             //O(n)
 
     }
 
