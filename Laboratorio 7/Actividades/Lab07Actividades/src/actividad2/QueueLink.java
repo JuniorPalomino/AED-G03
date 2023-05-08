@@ -11,31 +11,77 @@ package actividad2;
 public class QueueLink<E> implements Queue<E> {
 
     private Node<E> first;
+    private Node<E> last;
+    
+
+    public QueueLink(Node<E> n) {
+        this.first = n;
+        this.last = n;
+    }
+
+    public QueueLink(Node<E> first, Node<E> last) {
+        this.first = first;
+        this.last = last;
+    }
     
     
     @Override
     public void enqueue(E x) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Node<E> aux =new Node<E>(x);
+        if(this.isEmpty()){
+            this.first=aux;
+        }else{
+            this.last.setNext(aux);
+        }
+        this.last=aux;
+           
     }
 
     @Override
     public E dequeue() throws ExceptionIsEmpty {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
+        E aux=first.getData();
+       
+        if(isEmpty()){
+           
+            return null ;
+        }
+        first=first.next;
+        
+        
+        
+        return  aux;
+        
     }
 
     @Override
     public E front() throws ExceptionIsEmpty {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if(isEmpty()){
+           return null ;
+        }
+        
+        return  first.getData();
     }
 
     @Override
     public E back() throws ExceptionIsEmpty {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if(this.isEmpty()){
+           return null ;
+        }
+        
+        return last.getData();
     }
 
     @Override
     public boolean isEmpty() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+             
+        return (first==null || last==null); 
+        
+    }  
+
+    @Override
+    public String toString() {
+        return "QueueLink{" + "first=" + first + ", last=" + last + '}';
     }
     
 }

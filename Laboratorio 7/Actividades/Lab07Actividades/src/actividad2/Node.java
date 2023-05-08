@@ -1,8 +1,8 @@
 package actividad2;
 
-public class Node<T> {
+public class Node<T>  {
     private T data;
-    private Node<T> next;
+    Node next;
     
     public Node(T data){
         this.data = data;
@@ -13,12 +13,16 @@ public class Node<T> {
         this.data = data;
         this.next = next;
     }
+    /*public Node(){
+        this.data = null;
+        this.next = null;
+    }*/
     
     public T getData(){
         return this.data;
     }
     
-    public Node<T> getNext(){
+    public Node getNext(){
         return this.next;
     }
 
@@ -26,7 +30,7 @@ public class Node<T> {
         this.data = data;
     }
     
-    public void setNext(Node<T> next){
+    public void setNext(Node next){
         this.next = next;
     }
     

@@ -3,11 +3,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
  */
 package actividad2;
-import java.util.*;
+
 
 /**
  *
  * @author H P
+ * @param <E>
  */
 public interface Queue<E> {
     void enqueue(E x);
