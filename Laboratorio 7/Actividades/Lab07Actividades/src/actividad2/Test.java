@@ -12,7 +12,8 @@ public class Test {
      
        public static void main(String[] args) throws ExceptionIsEmpty {
         // TODO code application logic here
-        
+        /*
+        Node Nuevo=new Node('G');
         
         Node First= new Node('A');
         First.next= new Node('B');
@@ -22,14 +23,19 @@ public class Test {
         
         Node Last=new Node(First.next.next.next.next);
         
+        */
+        QueueLink K = new QueueLink();
+        K.enqueue(new Node('A'));
         
-        QueueLink K = new QueueLink(First,Last);
-        
-        
-        System.out.println(K.isEmpty());
+       /* System.out.println(K.isEmpty());
         System.out.println(K.dequeue());
         System.out.println(K.front());
         System.out.println(K.back());
+        System.out.println(K);*/
+        K.enqueue(new Node('G'));
+        K.enqueue(new Node('Z'));
+        System.out.println(K);
+        
                
  
         }
