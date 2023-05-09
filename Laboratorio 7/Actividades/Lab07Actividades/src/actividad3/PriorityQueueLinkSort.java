@@ -65,7 +65,7 @@ class PriorityQueueLinkSort<E, P extends Comparable<P>> implements PriorityQueue
     @Override
     public E dequeue() throws ExceptionIsEmpty {
         if (isEmpty()) {
-            throw new ExceptionIsEmpty("No se puede eliminar una cola vacia");
+            throw new ExceptionIsEmpty();
         }
 
         E aux = this.first.getData().data;
@@ -80,7 +80,7 @@ class PriorityQueueLinkSort<E, P extends Comparable<P>> implements PriorityQueue
     @Override
     public E front() throws ExceptionIsEmpty {
         if (isEmpty()) {
-            throw new ExceptionIsEmpty("La cola está vacía");
+            throw new ExceptionIsEmpty();
         }
         return this.first.getData().data;
     }
@@ -89,7 +89,7 @@ class PriorityQueueLinkSort<E, P extends Comparable<P>> implements PriorityQueue
     @Override
     public E back() throws ExceptionIsEmpty {
         if (isEmpty()) {
-            throw new ExceptionIsEmpty("La cola está vacía");
+            throw new ExceptionIsEmpty();
         }
         return this.last.getData().data;
     }

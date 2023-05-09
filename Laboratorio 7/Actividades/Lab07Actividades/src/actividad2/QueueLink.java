@@ -1,18 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package actividad2;
 
-/**
- *
- * @author H P
- */
 public class QueueLink<E> implements Queue<E> {
 
     private Node<E> first;
     private Node<E> last;
 
+    public Node<E> getFirst()
+    {
+        return first;
+    }
     public QueueLink() {
         this.first = null;
         this.last = null;
@@ -36,7 +33,6 @@ public class QueueLink<E> implements Queue<E> {
         } else {
            
             this.last.setNext(aux);
-            //last.next=this.last.getNext();
             
         }
         this.last = aux;

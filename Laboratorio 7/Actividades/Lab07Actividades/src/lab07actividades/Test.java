@@ -7,7 +7,7 @@ import actividad1.StackArray;
 public class Test {
     public static void main(String[] args) throws ExceptionIsEmpty {
         StackArray pilas= new StackArray(4);
-        //System.out.println(pilas.pop());
+        System.out.println(pilas.pop());
         pilas.push(4);
         pilas.push(1);
         pilas.push(7);
