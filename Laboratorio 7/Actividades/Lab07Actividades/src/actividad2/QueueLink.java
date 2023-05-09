@@ -49,7 +49,6 @@ public class QueueLink<E> implements Queue<E> {
             return null;
         }
         first = first.next;
-
         return aux;
 
     }
