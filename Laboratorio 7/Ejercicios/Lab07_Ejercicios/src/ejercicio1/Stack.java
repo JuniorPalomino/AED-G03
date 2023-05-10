@@ -1,4 +1,4 @@
-package actividad1;
+package ejercicio1;
 
 public interface Stack<E> {
 

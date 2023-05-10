@@ -24,7 +24,7 @@ public class Test {
         Node Last=new Node(First.next.next.next.next);
         
         */
-        QueueLink <Character> K = new QueueLink();
+        QueueLink K = new QueueLink();
         K.enqueue('A');
         K.enqueue('B');
         K.enqueue('G');

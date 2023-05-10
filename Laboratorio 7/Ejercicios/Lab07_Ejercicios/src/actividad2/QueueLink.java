@@ -15,7 +15,7 @@ public class QueueLink<E> implements Queue<E> {
         this.last = null;
     }
 
-    public QueueLink(Node<E> n) {
+    /*public QueueLink(Node<E> n) {
         this.first = n;
         this.last = n;
     }
@@ -25,6 +25,7 @@ public class QueueLink<E> implements Queue<E> {
         this.last = last;
     }
 
+*/
     @Override
     public void enqueue(E x) {
         Node<E> aux = new Node<E>(x);

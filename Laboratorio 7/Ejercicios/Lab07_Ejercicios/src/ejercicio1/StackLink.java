@@ -12,28 +12,77 @@ import actividad1.Stack;
  * @author H P
  */
 public class StackLink<E> implements Stack<E>{
-    private E[] array;
-    private int tope;
+    private Node<E> last ;
+
+    public StackLink() {
+        this.last = null;
+    }
 
     @Override
     public void push(E x) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Node<E> aux = new Node<E>(x);
+        Node<E> ultimo = this.last;
+        if (isEmpty()) {
+            this.last = aux;
+        } else {
+            this.last = aux;
+            this.last.setNext(ultimo);
+        }
     }
 
     @Override
     public E pop() throws ExceptionIsEmpty {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Node<E> aux = this.last;
+        if (isEmpty()) {
+            System.out.println("Lista Vacía");
+           return null;
+        } else {
+            this.last=this.last.next;
+            return aux.getData();
+        }
+        
     }
 
     @Override
     public E top() throws ExceptionIsEmpty {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+       if (isEmpty()) {
+           System.out.println("Lista Vacía");
+           return null;
+        } else {
+            return this.last.getData() ;
+        }
     }
 
     @Override
     public boolean isEmpty() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
+
+        return (this.last == null );
+
+   
     }
+
+    @Override
+    public String toString() {
+        if (isEmpty()) {
+            return "Lista Vacía";
+        }
+        Node aux = this.last;
+        boolean entra = !isEmpty();
+        while (entra) {
+            System.out.println(aux.getData());
+            aux = aux.next;
+
+            if (aux == null) {
+                entra = false;
+            }
+        }
+
+        return " ";
+    
+    }
+    
+    
 
     
 }
