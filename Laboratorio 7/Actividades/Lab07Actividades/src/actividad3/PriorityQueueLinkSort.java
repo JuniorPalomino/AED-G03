@@ -2,7 +2,7 @@ package actividad3;
 
 import actividad1.ExceptionIsEmpty;
 
-class PriorityQueueLinkSort<E, P extends Comparable<P>> implements PriorityQueue<E, P> {
+public class PriorityQueueLinkSort<E, P extends Comparable<P>> implements PriorityQueue<E, P> {
 
     //Clase EntryNode data y priority
     class EntryNode {
@@ -65,7 +65,7 @@ class PriorityQueueLinkSort<E, P extends Comparable<P>> implements PriorityQueue
     @Override
     public E dequeue() throws ExceptionIsEmpty {
         if (isEmpty()) {
-            throw new ExceptionIsEmpty();
+            throw new ExceptionIsEmpty("Cola Vacía");
         }
 
         E aux = this.first.getData().data;
@@ -80,7 +80,7 @@ class PriorityQueueLinkSort<E, P extends Comparable<P>> implements PriorityQueue
     @Override
     public E front() throws ExceptionIsEmpty {
         if (isEmpty()) {
-            throw new ExceptionIsEmpty();
+            throw new ExceptionIsEmpty("Cola Vacía");
         }
         return this.first.getData().data;
     }
@@ -89,7 +89,7 @@ class PriorityQueueLinkSort<E, P extends Comparable<P>> implements PriorityQueue
     @Override
     public E back() throws ExceptionIsEmpty {
         if (isEmpty()) {
-            throw new ExceptionIsEmpty();
+            throw new ExceptionIsEmpty("Cola Vacía");
         }
         return this.last.getData().data;
     }

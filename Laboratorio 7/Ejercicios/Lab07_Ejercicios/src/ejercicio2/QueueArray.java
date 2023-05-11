@@ -4,6 +4,9 @@
  */
 package ejercicio2;
 
+import actividad2.ExceptionIsEmpty;
+
+
 /**
  *
  * @author ADMIN
@@ -24,10 +27,11 @@ public class QueueArray<E> implements Queue<E> {
         this.arr = (E[]) new Object[maxsize];
     }
     
+     
     @Override
     public void enqueue(E x) throws ExceptionIsEmpty{
          if (size == maxsize) {
-            throw new ExceptionIsEmpty("Queue is full..");
+            throw new ExceptionIsEmpty("Cola llena");
         }
         rear = (rear + 1) % maxsize;
         arr[rear] = x;
@@ -38,7 +42,7 @@ public class QueueArray<E> implements Queue<E> {
     @Override
     public E dequeue() throws ExceptionIsEmpty {
         if (isEmpty()) {
-            throw new ExceptionIsEmpty("Queue is empty..");
+            throw new ExceptionIsEmpty("Cola vacía");
         }
         E result = arr[front];
         front = (front + 1) % maxsize;
@@ -49,7 +53,7 @@ public class QueueArray<E> implements Queue<E> {
     @Override
     public E front() throws ExceptionIsEmpty {
         if (isEmpty()) {
-            throw new ExceptionIsEmpty("Queue is empty..");
+            throw new ExceptionIsEmpty("Cola vacía");
         }
         return arr[front];
     }
@@ -57,12 +61,12 @@ public class QueueArray<E> implements Queue<E> {
     @Override
     public E back() throws ExceptionIsEmpty {
         if (isEmpty()) {
-            throw new ExceptionIsEmpty("Queue is empty..");
+            throw new ExceptionIsEmpty("Cola vacía");
         }
         return arr[rear];
         
     }
-
+    
     @Override
     public boolean isEmpty() {
         return (size == 0);
@@ -71,7 +75,7 @@ public class QueueArray<E> implements Queue<E> {
 
     @Override
     public String toString() {
-         String str = "";
+        String str = "";
         int count = 0;
         int index = front;
         while (count < size) {
@@ -81,6 +85,6 @@ public class QueueArray<E> implements Queue<E> {
         }
         return str;
     }
-    
+
     
 }

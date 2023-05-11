@@ -47,7 +47,7 @@ public class QueueLink<E> implements Queue<E> {
 
         if (isEmpty()) {
 
-            return null;
+            throw new ExceptionIsEmpty("Cola Vacía");
         }
         first = first.next;
 
@@ -58,7 +58,7 @@ public class QueueLink<E> implements Queue<E> {
     @Override
     public E front() throws ExceptionIsEmpty {
         if (isEmpty()) {
-            return null;
+            throw new ExceptionIsEmpty("Cola Vacía");
         }
 
         return first.getData();
@@ -68,7 +68,7 @@ public class QueueLink<E> implements Queue<E> {
     public E back() throws ExceptionIsEmpty {
 
         if (isEmpty()) {
-            return null;
+            throw new ExceptionIsEmpty("Cola Vacía");
         }
 
         return last.getData();

@@ -20,7 +20,7 @@ public class StackArray<E> implements Stack<E> {
 
     public E pop() throws ExceptionIsEmpty {
         if (tope == -1) {
-            throw new ExceptionIsEmpty();
+            throw new ExceptionIsEmpty("Pila vacía");
         }
         E aux = array[tope];
         array[tope] = null;
@@ -30,7 +30,7 @@ public class StackArray<E> implements Stack<E> {
 
     public E top() throws ExceptionIsEmpty {
         if (tope == -1) {
-            throw new ExceptionIsEmpty();
+            throw new ExceptionIsEmpty("Pila vacía");
         }
         return array[tope];
     }

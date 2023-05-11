@@ -3,13 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
  */
 package ejercicio2;
+import actividad2.ExceptionIsEmpty;
 
 
-/**
- *
- * @author H P
- * @param <E>
- */
 public interface Queue<E> {
     void enqueue(E x)throws ExceptionIsEmpty;
     E dequeue() throws ExceptionIsEmpty;

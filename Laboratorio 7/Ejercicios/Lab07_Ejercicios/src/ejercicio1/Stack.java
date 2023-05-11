@@ -1,4 +1,5 @@
 package ejercicio1;
+import actividad1.ExceptionIsEmpty;
 
 public interface Stack<E> {
 

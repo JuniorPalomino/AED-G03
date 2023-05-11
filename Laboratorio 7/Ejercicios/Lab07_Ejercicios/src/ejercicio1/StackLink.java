@@ -34,8 +34,7 @@ public class StackLink<E> implements Stack<E>{
     public E pop() throws ExceptionIsEmpty {
         Node<E> aux = this.last;
         if (isEmpty()) {
-            System.out.println("Lista Vacía");
-           return null;
+            throw new ExceptionIsEmpty();
         } else {
             this.last=this.last.next;
             return aux.getData();
@@ -46,8 +45,7 @@ public class StackLink<E> implements Stack<E>{
     @Override
     public E top() throws ExceptionIsEmpty {
        if (isEmpty()) {
-           System.out.println("Lista Vacía");
-           return null;
+           throw new ExceptionIsEmpty();
         } else {
             return this.last.getData() ;
         }
