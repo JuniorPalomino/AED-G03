@@ -1,5 +1,6 @@
+package ejercicio3;
 
-package actividad2;
+import actividad1.ExceptionIsEmpty;
 
 public class QueueLink<E> implements Queue<E> {
 
@@ -21,7 +22,7 @@ public class QueueLink<E> implements Queue<E> {
         this.last = null;
     }
 
-    /*public QueueLink(Node<E> n) {
+    public QueueLink(Node<E> n) {
         this.first = n;
         this.last = n;
     }
@@ -31,7 +32,6 @@ public class QueueLink<E> implements Queue<E> {
         this.last = last;
     }
 
-*/
     @Override
     public void enqueue(E x) {
         Node<E> aux = new Node<E>(x);
@@ -53,10 +53,9 @@ public class QueueLink<E> implements Queue<E> {
 
         if (isEmpty()) {
 
-            throw new ExceptionIsEmpty("Cola Vacía");
+            return null;
         }
         first = first.next;
-
         return aux;
 
     }
@@ -64,7 +63,7 @@ public class QueueLink<E> implements Queue<E> {
     @Override
     public E front() throws ExceptionIsEmpty {
         if (isEmpty()) {
-            throw new ExceptionIsEmpty("Cola Vacía");
+            return null;
         }
 
         return first.getData();
@@ -74,7 +73,7 @@ public class QueueLink<E> implements Queue<E> {
     public E back() throws ExceptionIsEmpty {
 
         if (isEmpty()) {
-            throw new ExceptionIsEmpty("Cola Vacía");
+            return null;
         }
 
         return last.getData();
@@ -88,22 +87,21 @@ public class QueueLink<E> implements Queue<E> {
     }
 
     @Override
-    public String toString() {
-        if (isEmpty()) {
-            return "Lista Vacía";
-        }
-        Node aux = first;
-        boolean entra = !isEmpty();
-        while (entra) {
-            System.out.println(aux.getData());
-            aux = aux.next;
-
-            if (aux == null) {
-                entra = false;
-            }
-        }
-
-        return " ";
+public String toString() {
+    if (isEmpty()) {
+        return "Lista Vacía";
     }
+
+    StringBuilder sb = new StringBuilder();
+    Node<E> current = first;
+    while (current != null) {
+        sb.append(current.getData()).append(", ");
+        current = current.getNext();
+    }
+    sb.setLength(sb.length() - 2); // Eliminar la última coma y espacio
+
+    return sb.toString();
+}
+
 
 }

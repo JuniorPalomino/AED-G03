@@ -2,7 +2,7 @@ package actividad3;
 
 import actividad1.ExceptionIsEmpty;
 
-class PriorityQueueLinkSort<E, P extends Comparable<P>> implements PriorityQueue<E, P> {
+public class PriorityQueueLinkSort<E, P extends Comparable<P>> implements PriorityQueue<E, P> {
 
     //Clase EntryNode data y priority
     class EntryNode {
