@@ -1,18 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
+
 package lab07_ejercicios;
 
 import actividad1.ExceptionIsEmpty;
 import ejercicio1.StackLink;
 import ejercicio2.QueueArray;
 import ejercicio3.PriorityQueueLinked;
+import ejercicio4.Polaca;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
-/**
- *
- * @author H P
- */
 public class Lab07_Ejercicios {
 
     /**
@@ -20,7 +17,7 @@ public class Lab07_Ejercicios {
      */
     public static void main(String[] args) throws ExceptionIsEmpty, actividad2.ExceptionIsEmpty {
         // TODO code application logic here
-
+/*
         //-----PILAS DE NODOS--EJERCICIO 1------//
         StackLink PilaUno = new StackLink();
 
@@ -94,8 +91,38 @@ public class Lab07_Ejercicios {
 
         // Imprimir el contenido de la cola después de la extracción
         System.out.println(priorityQueue);
-
+*/
         //------------------------//
+        //------EJERCICIO DE APLICACIÓN---EJERCICIO 4------//
+        
+        Polaca p = new Polaca();
+
+        try {
+            // Leer archivo de expresiones infijas
+            BufferedReader reader = new BufferedReader(new FileReader("expresiones.txt"));
+
+            String line = reader.readLine();
+
+            // Leer cada expresión y mostrar su resultado
+            while (line != null) {
+                String infija = line.substring(1, line.length() - 1); // eliminar los símbolos de inicio y fin $
+                String posfija = p.inToPos(infija);
+                int resultado = p.resultExpresion(posfija);
+
+                System.out.println("Expresion infija: " + infija);
+                System.out.println("Expresion posfija: " + posfija);
+                System.out.println("Resultado: " + resultado);
+
+                line = reader.readLine();
+            }
+
+            reader.close();
+
+        } catch (IOException e) {
+            System.out.println("Error al leer el archivo de expresiones infijas");
+        } catch (ExceptionIsEmpty e) {
+            System.out.println("Error: " + e.getMessage());
+        }
     }
 
 }
