@@ -56,7 +56,7 @@ public class Lab07_Ejercicios {
         //-----COLAS DE PRIORIDAD DENTRO DE UN ARREGLO--EJERCICIO 3------//
         
         
-        PriorityQueueLinked<String, Integer> priorityQueue = new PriorityQueueLinked<>(3);
+        PriorityQueueLinked<String, Integer> priorityQueue = new PriorityQueueLinked<>(5);
 
         // Agregar elementos a la cola con diferentes prioridades
         priorityQueue.enqueue("A", 1);
