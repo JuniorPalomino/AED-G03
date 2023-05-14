@@ -1,4 +1,3 @@
-
 package lab07actividades;
 
 import actividad1.ExceptionIsEmpty;
@@ -7,21 +6,24 @@ import actividad2.QueueLink;
 import actividad3.PriorityQueueLinkSort;
 
 public class Test {
+
     public static void main(String[] args) throws ExceptionIsEmpty {
-        /*
-        StackArray pilas= new StackArray(4);
-        System.out.println(pilas.pop());
-        pilas.push(4);
-        pilas.push(1);
-        pilas.push(7);
-        pilas.push(9);
-        System.out.println("Tope de la pila: "+pilas.top());
-        System.out.println("La pila esta llena?: "+pilas.isFull());
-        System.out.println(pilas);
-        */
-        
+        try {
+            StackArray pilas = new StackArray(4);
+            pilas.push(4);
+            pilas.push(1);
+            pilas.push(7);
+            pilas.push(9);
+            System.out.println(pilas.pop());
+            System.out.println("Tope de la pila: " + pilas.top());
+            pilas.push(9);
+            System.out.println("La pila esta llena?: " + pilas.isFull());
+            System.out.println(pilas);
+        } catch (ExceptionIsEmpty e) {
+            System.out.println(e.getMessage());
+        }
         //----------------------ACTIVIDAD 2-------------------------//
-        
+        /*
         QueueLink <Character> K = new QueueLink();
         K.enqueue('A');
         K.enqueue('B');
@@ -32,7 +34,7 @@ public class Test {
         System.out.println(K.front()+"\n");
         System.out.println(K.back()+"\n");
         System.out.println(K+"\n");
-        
+         */
         //----------------------ACTIVIDAD 3-------------------------//
         /*
         PriorityQueueLinkSort<Integer, Integer> priorityQueue = new PriorityQueueLinkSort<>();
@@ -52,7 +54,6 @@ public class Test {
         } catch (ExceptionIsEmpty e) {
             System.err.println(e.getMessage());
         }
-*/
+         */
     }
 }
-

@@ -6,3 +6,4 @@ public class ExceptionIsEmpty extends Exception {
         super("Pila vacia");
     }
 }
+
