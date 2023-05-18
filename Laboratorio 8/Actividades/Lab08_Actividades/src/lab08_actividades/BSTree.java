@@ -1,14 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package lab08_actividades;
 
-/**
- *
- * @author H P
- * @param <E>
- */
 public class BSTree<E extends Comparable<E>> {
 
     class Node<E> {
@@ -97,8 +89,8 @@ public class BSTree<E extends Comparable<E>> {
 
     public Node<E> removeRec(E x, Node<E> actual) throws ItemDuplicated {
 
-        Node<E> res=actual;
-        
+        Node<E> res = actual;
+
         if (actual == null) {
 
             throw new ItemDuplicated("Elemento no encontrado");
@@ -109,11 +101,11 @@ public class BSTree<E extends Comparable<E>> {
 
         if (resC < 0) {
 
-            res.right = removeRec(x,actual.right);
+            res.right = removeRec(x, actual.right);
 
         } else if (resC > 0) {
 
-            res.left = removeRec(x,actual.left);
+            res.left = removeRec(x, actual.left);
 
         } else {
 
@@ -161,36 +153,46 @@ public class BSTree<E extends Comparable<E>> {
 
     }
 
-    public E minRecover(){ 
-        
-        Node aux=minRecover(this.root);
+    public E minRecover() {
 
-        return (E) aux.data; 
+        Node aux = minRecover(this.root);
 
-    } 
-
-    public Node<E> minRecover(Node<E> actual){ 
-
-        if(actual.left == null){ 
-
-            return actual; 
-
-        }else{ 
-
-            return minRecover(actual.left); 
-
-        } 
-
-    } 
-    
-    
-
-    public void inOrden() {
+        return (E) aux.data;
 
     }
 
-    public void inOrden(Node actual) {
+    public Node<E> minRecover(Node<E> actual) {
 
+        if (actual.left == null) {
+
+            return actual;
+
+        } else {
+
+            return minRecover(actual.left);
+
+        }
+
+    }
+
+    public String inOrden() {
+        if (root != null) {
+            return inOrden(root);
+        } else {
+            return "*";
+        }
+    }
+
+    protected String inOrden(Node<E> actual) {
+        String res = "";
+        if (actual.left != null) {
+            res += inOrden(actual.left);
+        }
+        res += actual.data.toString() + ", ";
+        if (actual.right != null) {
+            res += inOrden(actual.right);
+        }
+        return res;
     }
 
 }
