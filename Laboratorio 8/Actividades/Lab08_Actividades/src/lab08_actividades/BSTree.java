@@ -1,6 +1,8 @@
 
 package lab08_actividades;
 
+import java.util.StringJoiner;
+
 public class BSTree<E extends Comparable<E>> {
 
     class Node<E> {
@@ -193,6 +195,64 @@ public class BSTree<E extends Comparable<E>> {
             res += inOrden(actual.right);
         }
         return res;
+        
+        
     }
+
+    public String toString() { 
+
+        if (root == null) { 
+
+            return ""; 
+
+        } 
+
+  
+
+        StringBuilder sb = new StringBuilder(); 
+
+        toString(root, sb, "", ""); 
+
+        return sb.toString(); 
+
+    } 
+
+  
+
+    private void toString(Node node, StringBuilder sb, String padding, String pointer) { 
+
+        if (node != null) { 
+
+            sb.append(padding); 
+
+            sb.append(pointer); 
+
+            sb.append(node.data.toString()); 
+
+            sb.append("\n"); 
+
+  
+
+            StringBuilder paddingBuilder = new StringBuilder(padding); 
+
+            paddingBuilder.append("│  "); 
+
+  
+
+            String paddingForBoth = paddingBuilder.toString(); 
+
+            String pointerRight = "└──"; 
+
+            String pointerLeft = (node.right != null) ? "├──" : "└──"; 
+
+  
+
+            toString(node.left, sb, paddingForBoth, pointerLeft); 
+
+            toString(node.right, sb, paddingForBoth, pointerRight); 
+
+        } 
+
+    } 
 
 }
