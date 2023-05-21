@@ -20,6 +20,11 @@ public class BSTree<E extends Comparable<E>> {
             this.right = right;
         }
 
+        @Override
+        public String toString() {
+            return "Node{" + "data=" + data + ", left=" + left + ", right=" + right + '}';
+        }
+
     }
     private Node root;
 
@@ -198,9 +203,27 @@ public class BSTree<E extends Comparable<E>> {
 
     }
 
-   //Metodo PreOrden
-    
-   public String preOrdenIterativo() {
+    // Metodo para contar nodos en un árbol binario
+    int countNodes(Node node) {
+        if (node == null) {
+            return 0;
+        }
+        return 1 + countNodes(node.left) + countNodes(node.right);
+    }
+
+    //Altura de un arbol
+    int height(Node node) {
+        if (node == null) {
+            return 0;
+        } else {
+            int lHeight = height(node.left);
+            int rHeight = height(node.right);
+            return (lHeight > rHeight) ? (lHeight + 1) : (rHeight + 1);
+        }
+    }
+
+    //Metodo PreOrden
+    public String preOrdenIterativo() {
         if (root == null) {
             return "";
         }
@@ -224,8 +247,6 @@ public class BSTree<E extends Comparable<E>> {
 
         return sb.toString().trim();
     }
-
-    
 
     public String toString() {
 
@@ -271,6 +292,64 @@ public class BSTree<E extends Comparable<E>> {
 
         }
 
+    }
+
+    public Node<E> getMaxNode() {
+        if (root == null) {
+            return null;
+        }
+
+        Node<E> current = root;
+        while (current.right != null) {
+            current = current.right;
+        }
+
+        return current;
+    }
+
+    public void parenthesize() {
+        if (root == null) {
+            System.out.println("El árbol está vacío.");
+            return;
+        }
+
+        parenthesize(root, 0);
+    }
+
+    private void parenthesize(Node<E> node, int level) {
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 0; i < level; i++) {
+            sb.append("  ");
+        }
+
+        sb.append(node.data);
+
+        if (node.left != null || node.right != null) {
+            sb.append("(");
+
+            System.out.println(sb.toString());
+
+            if (node.left != null) {
+                parenthesize(node.left, level + 1);
+            } else {
+                System.out.println();
+            }
+
+            if (node.right != null) {
+                parenthesize(node.right, level + 1);
+            } else {
+                System.out.println();
+            }
+
+            for (int i = 0; i < level; i++) {
+                System.out.print("  ");
+            }
+
+            System.out.print(")");
+        } else {
+            System.out.println(sb.toString());
+        }
     }
 
 }
