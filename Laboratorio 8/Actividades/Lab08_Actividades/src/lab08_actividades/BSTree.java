@@ -1,7 +1,4 @@
-
 package lab08_actividades;
-
-import java.util.StringJoiner;
 
 public class BSTree<E extends Comparable<E>> {
 
@@ -86,10 +83,11 @@ public class BSTree<E extends Comparable<E>> {
     public void remove(E x) throws ItemDuplicated {
 
         root = removeRec(x, this.root);
+        
 
     }
 
-    public Node<E> removeRec(E x, Node<E> actual) throws ItemDuplicated {
+    private Node<E> removeRec(E x, Node<E> actual) throws ItemDuplicated {
 
         Node<E> res = actual;
 
@@ -163,7 +161,7 @@ public class BSTree<E extends Comparable<E>> {
 
     }
 
-    public Node<E> minRecover(Node<E> actual) {
+    private Node<E> minRecover(Node<E> actual) {
 
         if (actual.left == null) {
 
@@ -195,64 +193,53 @@ public class BSTree<E extends Comparable<E>> {
             res += inOrden(actual.right);
         }
         return res;
-        
-        
+
     }
 
-    public String toString() { 
+    public String toString() {
 
-        if (root == null) { 
+        if (root == null) {
 
-            return ""; 
+            return "";
 
-        } 
+        }
 
-  
+        StringBuilder sb = new StringBuilder();
 
-        StringBuilder sb = new StringBuilder(); 
+        toString(root, sb, "", "");
 
-        toString(root, sb, "", ""); 
+        return sb.toString();
 
-        return sb.toString(); 
+    }
 
-    } 
+    private void toString(Node node, StringBuilder sb, String padding, String pointer) {
 
-  
+        if (node != null) {
 
-    private void toString(Node node, StringBuilder sb, String padding, String pointer) { 
+            sb.append(padding);
 
-        if (node != null) { 
+            sb.append(pointer);
 
-            sb.append(padding); 
+            sb.append(node.data.toString());
 
-            sb.append(pointer); 
+            sb.append("\n");
 
-            sb.append(node.data.toString()); 
+            StringBuilder paddingBuilder = new StringBuilder(padding);
 
-            sb.append("\n"); 
+            paddingBuilder.append("│  ");
 
-  
+            String paddingForBoth = paddingBuilder.toString();
 
-            StringBuilder paddingBuilder = new StringBuilder(padding); 
+            String pointerRight = "└──";
 
-            paddingBuilder.append("│  "); 
+            String pointerLeft = (node.right != null) ? "├──" : "└──";
 
-  
+            toString(node.right, sb, paddingForBoth, pointerRight);
 
-            String paddingForBoth = paddingBuilder.toString(); 
+            toString(node.left, sb, paddingForBoth, pointerLeft);
 
-            String pointerRight = "└──"; 
+        }
 
-            String pointerLeft = (node.right != null) ? "├──" : "└──"; 
-
-  
-
-            toString(node.left, sb, paddingForBoth, pointerLeft); 
-
-            toString(node.right, sb, paddingForBoth, pointerRight); 
-
-        } 
-
-    } 
+    }
 
 }

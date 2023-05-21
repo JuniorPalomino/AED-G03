@@ -18,6 +18,7 @@ public class Lab08_Actividades {
         
         BSTree PrimerArbol= new BSTree();
         
+           
         PrimerArbol.insert(7);
         PrimerArbol.insert(5);
         PrimerArbol.insert(4);
@@ -26,8 +27,16 @@ public class Lab08_Actividades {
         PrimerArbol.insert(8);
         PrimerArbol.remove(7);
         
+        System.out.println(PrimerArbol.minRemove());
+        System.out.println(PrimerArbol.search(10));
+      
         System.out.println(PrimerArbol.toString());
         System.out.println(PrimerArbol.inOrden());
+        
+        PrimerArbol.insert(9);
+        PrimerArbol.insert(11);
+         
+        System.out.println(PrimerArbol.toString());
         
     }
     

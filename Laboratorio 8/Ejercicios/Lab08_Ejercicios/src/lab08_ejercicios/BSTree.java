@@ -222,8 +222,10 @@ public class BSTree<E extends Comparable<E>> {
         }
     }
 
-    //Metodo PreOrden
+    //Metodo PreOrden---Ejercicio 03
+    
     public String preOrdenIterativo() {
+        
         if (root == null) {
             return "";
         }
@@ -292,6 +294,21 @@ public class BSTree<E extends Comparable<E>> {
 
         }
 
+    }
+    
+    //Metodo getMinNode---Ejercicio 06
+    
+    public Node<E> getMinNode() {
+        if (root == null) {
+            return null;
+        }
+
+        Node<E> aux = root;
+        while (aux.left != null) {
+            aux = aux.left;
+        }
+
+        return aux;
     }
 
     public Node<E> getMaxNode() {
