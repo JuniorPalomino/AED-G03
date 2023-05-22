@@ -204,15 +204,15 @@ public class BSTree<E extends Comparable<E>> {
     }
 
     // Metodo para contar nodos en un árbol binario
-    int countNodes(Node node) {
+    public int countNodes(Node node) {
         if (node == null) {
             return 0;
         }
         return 1 + countNodes(node.left) + countNodes(node.right);
     }
 
-    //Altura de un arbol
-    int height(Node node) {
+    //Altura de un Nodo
+    public int height(Node node) {
         if (node == null) {
             return 0;
         } else {
