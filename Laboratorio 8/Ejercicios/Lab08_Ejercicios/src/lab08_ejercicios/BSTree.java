@@ -296,6 +296,24 @@ public class BSTree<E extends Comparable<E>> {
 
     }
     
+    //Metodo getTreeArea---Ejercicio 04
+    
+    public int obtenerAreaArbol() {
+        int cantidadHojas = contarHojas(root);
+        int altura = height(root);
+        return cantidadHojas * altura;
+    }
+
+    private int contarHojas(Node<E> nodo) {
+        if (nodo == null) {
+            return 0;
+        }
+        if (nodo.left == null && nodo.right == null) {
+            return 1;
+        }
+        return contarHojas(nodo.left) + contarHojas(nodo.right);
+    }
+
     //Metodo getMinNode---Ejercicio 06
     
     public Node<E> getMinNode() {

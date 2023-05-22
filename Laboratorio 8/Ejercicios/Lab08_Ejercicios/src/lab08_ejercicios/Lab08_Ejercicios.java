@@ -19,6 +19,7 @@ public class Lab08_Ejercicios {
             bst.insert(85);
 
             System.out.println(bst.getMaxNode());
+            System.out.println(bst.obtenerAreaArbol());
         } catch (ItemDuplicated e) {
             System.out.println(e.getMessage());
         }
