@@ -5,6 +5,10 @@ import java.util.StringJoiner;
 
 public class BSTree<E extends Comparable<E>> {
 
+    int countNodes() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     class Node<E> {
 
         protected E data;

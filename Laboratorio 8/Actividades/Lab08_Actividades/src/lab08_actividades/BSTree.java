@@ -1,5 +1,7 @@
 package lab08_actividades;
 
+import java.util.Stack;
+
 public class BSTree<E extends Comparable<E>> {
 
     class Node<E> {
@@ -160,6 +162,29 @@ public class BSTree<E extends Comparable<E>> {
         return (E) aux.data;
 
     }
+    public int countNodes() {
+    if (isEmpty()) {
+        return 0;
+    }
+    
+    int count = 0;
+    Stack<Node<E>> stack = new Stack<>();
+    Node<E> current = root;
+    
+    while (current != null || !stack.isEmpty()) {
+        if (current != null) {
+            stack.push(current);
+            current = current.left;
+        } else {
+            current = stack.pop();
+            count++;
+            current = current.right;
+        }
+    }
+    
+    return count;
+}
+
 
     private Node<E> minRecover(Node<E> actual) {
 
