@@ -227,9 +227,8 @@ public class BSTree<E extends Comparable<E>> {
     }
 
     //Metodo PreOrden---Ejercicio 03
-    
     public String preOrdenIterativo() {
-        
+
         if (root == null) {
             return "";
         }
@@ -299,9 +298,8 @@ public class BSTree<E extends Comparable<E>> {
         }
 
     }
-    
+
     //Metodo getTreeArea---Ejercicio 04
-    
     public int obtenerAreaArbol() {
         int cantidadHojas = contarHojas(root);
         int altura = height(root);
@@ -319,7 +317,6 @@ public class BSTree<E extends Comparable<E>> {
     }
 
     //Metodo getMinNode---Ejercicio 06
-    
     public Node<E> getMinNode() {
         if (root == null) {
             return null;
