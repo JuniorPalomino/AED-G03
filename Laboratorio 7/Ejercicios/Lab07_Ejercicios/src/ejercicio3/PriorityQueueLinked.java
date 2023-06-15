@@ -85,7 +85,7 @@ public class PriorityQueueLinked<E, P> implements PriorityQueue<E, P> {
         StringBuilder sb = new StringBuilder();
         
         for (int i = 0; i < arreglo.length; i++) {
-            sb.append("Cola ").append(i).append(": ").append(arreglo[i].toString()).append("\n");
+            sb.append("Atencion ").append(i).append(": ").append(arreglo[i].toString()).append("\n");
         }
         return sb.toString();
     }
