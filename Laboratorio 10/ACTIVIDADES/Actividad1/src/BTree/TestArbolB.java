@@ -45,14 +45,21 @@ public class TestArbolB {
         arbolB.showBTree();
         System.out.println("");
         
-        //*Valores a eliminar cuarta ronda
+        //Valores a eliminar cuarta ronda
         System.out.println("Eliminando... valor 80");
         arbolB.eliminarClave(80);
-       /* System.out.println("Insertando... valor 70");
-        arbolB.insertar(70);
-        System.out.println("Insertando... valor 90");
-        arbolB.insertar(90);
-        */
+        
+        
+        //Mostrando arbol B por pantalla en preorder
+        System.out.println("ESTADO ARBOL B");
+        arbolB.showBTree();
+        System.out.println("");
+        
+        //Valores a eliminar cuarta ronda
+        System.out.println("Eliminando... valor 90");
+        arbolB.eliminarClave(90);
+        
+        
         //Mostrando arbol B por pantalla en preorder
         System.out.println("ESTADO ARBOL B");
         arbolB.showBTree();
@@ -61,11 +68,13 @@ public class TestArbolB {
         
 
         //Buscar
+        /*
         System.out.println("\nBuscando el nodo con el valor 80 en el arbol B:");
         arbolB.buscarNodoPorClave(80);
         
         System.out.println("");
         System.out.println("-- FIN --");
+        */
     }
 }
 
