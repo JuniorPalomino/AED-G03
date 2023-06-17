@@ -8,11 +8,15 @@ public class ArbolB {
 
     NodoArbolB root;
     int t;
+    private int[] caminoRecorrido;
+    private int index;
 
     //Constructor
     public ArbolB(int t) {
         this.t = t;
         root = new NodoArbolB(t);
+        caminoRecorrido = new int[100]; // Tamaño del arreglo puede ser ajustado según necesidad
+        index = 0;
     }
 
     //Busca el valor ingresado y muestra el contenido del nodo que contiene el valor
@@ -29,29 +33,38 @@ public class ArbolB {
     //Search
 
     private NodoArbolB search(NodoArbolB actual, int key) {
-        int i = 0;//se empieza a buscar siempre en la primera posicion
+        int i = 0;
 
-        //Incrementa el indice mientras el valor de la clave del nodo sea menor
+        // Incrementa el índice mientras el valor de la clave del nodo sea menor
         while (i < actual.n && key > actual.key[i]) {
             i++;
         }
 
-        //Si la clave es igual, entonces retornamos el nodo
+        // Si la clave es igual, entonces retornamos el nodo
         if (i < actual.n && key == actual.key[i]) {
+            caminoRecorrido[index++] = actual.key[i]; // Agregar el nodo al camino recorrido
             return actual;
         }
 
-        //Si llegamos hasta aqui, entonces hay que buscar los hijos
-        //Se revisa primero si tiene hijos
+        // Si llegamos hasta aquí, entonces hay que buscar los hijos
         if (actual.leaf) {
             return null;
         } else {
-            //Si tiene hijos, hace una llamada recursiva
+            // Si tiene hijos, hace una llamada recursiva
+            caminoRecorrido[index++] = actual.key[i]; // Agregar el nodo al camino recorrido
             return search(actual.child[i], key);
         }
     }
-//---------------------------------------------------------//
 
+//---------------------------------------------------------//
+    public int[] getCaminoRecorrido() {
+        int[] resultado = new int[index];
+        System.arraycopy(caminoRecorrido, 0, resultado, 0, index);
+        index = 0; // Restablecer el índice después de obtener el camino recorrido
+        return resultado;
+    }
+
+//---------------------------------------------------------//
     public void insertar(int key) {
         NodoArbolB r = root;
 
@@ -263,7 +276,6 @@ public class ArbolB {
     }
 
     //---------------------------Final Ejercicio 1-----------------------//
-    
     // Caso cuando la raiz se divide
     // x =          | | | | | |
     //             /
@@ -359,4 +371,16 @@ public class ArbolB {
             }
         }
     }
+
+    //Encontrar valor maximo
+    public int encontrarMaximo() {
+        NodoArbolB nodoActual = root;
+
+        while (!nodoActual.leaf) {
+            nodoActual = nodoActual.child[nodoActual.n];
+        }
+
+        return nodoActual.key[nodoActual.n - 1];
+    }
+
 }
