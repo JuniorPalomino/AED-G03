@@ -84,10 +84,9 @@ public class TestArbolB {
         int[] caminoSearch = arbolB.getCaminoRecorrido();
         System.out.println("Camino recorrido después de la búsqueda: " + arrayToString(caminoSearch));
 
-        
         int maximo = arbolB.encontrarMaximo();
         System.out.println("Valor máximo del Árbol B: " + maximo);
-        
+
         System.out.println("");
         System.out.print("Nodo minimo: ");
         arbolB.nodoMinimo().imprimir();

@@ -1,9 +1,5 @@
 package BTree;
 
-/**
- *
- * @author vical
- */
 public class ArbolB {
 
     NodoArbolB root;
