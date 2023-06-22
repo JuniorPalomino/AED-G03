@@ -87,6 +87,36 @@ public class HashC<E extends Comparable<E>> {
         rehash();
         insert(key, reg); // Llamar recursivamente al método insert para insertar el elemento en la tabla redimensionada
     }
+    
+    private void rehash() {
+    int newSize = m * 2; // Nuevo tamaño para la tabla hash
+
+    // Crear una nueva tabla con el nuevo tamaño
+    ArrayList<Element> newTable = new ArrayList<>(newSize);
+    for (int i = 0; i < newSize; i++) {
+        newTable.add(new Element(0, null)); // Inicializar todas las posiciones con marcador 0 y valor null
+    }
+
+    // Transferir elementos de la tabla original a la nueva tabla
+    for (Element element : table) {
+        if (element.mark == 1) {
+            int newHash = element.reg.getKey() % newSize; // Calcular la nueva dirección de dispersión para el elemento
+            int probe = 1; // Variable para el incremento de la exploración lineal
+
+            // Realizar exploración lineal en la nueva tabla para encontrar una posición vacía
+            while (newTable.get(newHash).mark == 1) {
+                newHash = (newHash + probe) % newSize; // Calcular la nueva dirección de dispersión
+                probe++; // Incrementar la variable de exploración lineal
+            }
+
+            newTable.set(newHash, element); // Insertar el elemento en la nueva tabla
+        }
+    }
+
+    table = newTable; // Asignar la nueva tabla como la tabla actual
+    m = newSize; // Actualizar el tamaño de la tabla
+}
+
 
     public E search(int key) {
 
