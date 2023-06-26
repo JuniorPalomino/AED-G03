@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package lab11.actividad02;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 
@@ -58,5 +59,42 @@ public class HashA<E extends Comparable<E>> {
         }
         return sb.toString();
     }
-}
 
+    public int squareMethodHash(int key, int tableSize) {
+        int squaredValue = key * key;
+        String squaredString = String.valueOf(squaredValue);
+        int startIndex = (squaredString.length() / 2) - (tableSize / 2);
+        int endIndex = startIndex + tableSize;
+
+        // Tomar una parte del resultado cuadrado como índice hash
+        String hashString = squaredString.substring(startIndex, endIndex);
+        int hash = Integer.parseInt(hashString);
+
+        // Asegurarse de que el índice hash esté dentro del rango de la tabla
+        return hash % tableSize;
+    }
+
+    public int foldingSumMethodHash(int key, int tableSize) {
+        int sum = 0;
+        String keyString = String.valueOf(key);
+
+        // Dividir el valor de entrada en partes más pequeñas y sumarlas
+        for (int i = 0; i < keyString.length(); i += 2) {
+            int startIndex = i;
+            int endIndex = Math.min(i + 2, keyString.length());
+            String part = keyString.substring(startIndex, endIndex);
+            sum += Integer.parseInt(part);
+        }
+
+        // Tomar una parte de la suma como índice hash
+        String sumString = String.valueOf(sum);
+        int startIndex = (sumString.length() / 2) - (tableSize / 2);
+        int endIndex = startIndex + tableSize;
+        String hashString = sumString.substring(startIndex, endIndex);
+        int hash = Integer.parseInt(hashString);
+
+        // Asegurarse de que el índice hash esté dentro del rango de la tabla
+        return hash % tableSize;
+    }
+
+}

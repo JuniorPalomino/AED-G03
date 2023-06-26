@@ -15,7 +15,7 @@ public class Lab11Actividad02 {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-       
+       /*
        HashC PrimerHash= new HashC(11); 
        PrimerHash.insert(34, "Elemento 1");
        PrimerHash.insert(3, "Elementon 2");
@@ -30,6 +30,8 @@ public class Lab11Actividad02 {
        PrimerHash.insert(34, "Elemento 11");
        
        System.out.println(PrimerHash.toString());
+       */
+       
         HashA<String> hashTable = new HashA<>(7);
 
         hashTable.insert(1, "Hola");
@@ -56,6 +58,7 @@ public class Lab11Actividad02 {
         System.out.println("Valor asociado a la clave 4: " + hashTable.search(4));
         System.out.println("Valor asociado a la clave 8: " + hashTable.search(8));
         System.out.println("Valor asociado a la clave 34: " + hashTable.search(34));
+
     }
     
 }

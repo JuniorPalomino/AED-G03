@@ -87,36 +87,35 @@ public class HashC<E extends Comparable<E>> {
         rehash();
         insert(key, reg); // Llamar recursivamente al método insert para insertar el elemento en la tabla redimensionada
     }
-    
+
     private void rehash() {
-    int newSize = m * 2; // Nuevo tamaño para la tabla hash
+        int newSize = m * 2; // Nuevo tamaño para la tabla hash
 
-    // Crear una nueva tabla con el nuevo tamaño
-    ArrayList<Element> newTable = new ArrayList<>(newSize);
-    for (int i = 0; i < newSize; i++) {
-        newTable.add(new Element(0, null)); // Inicializar todas las posiciones con marcador 0 y valor null
-    }
-
-    // Transferir elementos de la tabla original a la nueva tabla
-    for (Element element : table) {
-        if (element.mark == 1) {
-            int newHash = element.reg.getKey() % newSize; // Calcular la nueva dirección de dispersión para el elemento
-            int probe = 1; // Variable para el incremento de la exploración lineal
-
-            // Realizar exploración lineal en la nueva tabla para encontrar una posición vacía
-            while (newTable.get(newHash).mark == 1) {
-                newHash = (newHash + probe) % newSize; // Calcular la nueva dirección de dispersión
-                probe++; // Incrementar la variable de exploración lineal
-            }
-
-            newTable.set(newHash, element); // Insertar el elemento en la nueva tabla
+        // Crear una nueva tabla con el nuevo tamaño
+        ArrayList<Element> newTable = new ArrayList<>(newSize);
+        for (int i = 0; i < newSize; i++) {
+            newTable.add(new Element(0, null)); // Inicializar todas las posiciones con marcador 0 y valor null
         }
+
+        // Transferir elementos de la tabla original a la nueva tabla
+        for (Element element : table) {
+            if (element.mark == 1) {
+                int newHash = element.reg.getKey() % newSize; // Calcular la nueva dirección de dispersión para el elemento
+                int probe = 1; // Variable para el incremento de la exploración lineal
+
+                // Realizar exploración lineal en la nueva tabla para encontrar una posición vacía
+                while (newTable.get(newHash).mark == 1) {
+                    newHash = (newHash + probe) % newSize; // Calcular la nueva dirección de dispersión
+                    probe++; // Incrementar la variable de exploración lineal
+                }
+
+                newTable.set(newHash, element); // Insertar el elemento en la nueva tabla
+            }
+        }
+
+        table = newTable; // Asignar la nueva tabla como la tabla actual
+        m = newSize; // Actualizar el tamaño de la tabla
     }
-
-    table = newTable; // Asignar la nueva tabla como la tabla actual
-    m = newSize; // Actualizar el tamaño de la tabla
-}
-
 
     public E search(int key) {
 
@@ -165,6 +164,43 @@ public class HashC<E extends Comparable<E>> {
         }
 
         return s;
+    }
+
+    public int squareMethodHash(int key, int tableSize) {
+        int squaredValue = key * key;
+        String squaredString = String.valueOf(squaredValue);
+        int startIndex = (squaredString.length() / 2) - (tableSize / 2);
+        int endIndex = startIndex + tableSize;
+
+        // Tomar una parte del resultado cuadrado como índice hash
+        String hashString = squaredString.substring(startIndex, endIndex);
+        int hash = Integer.parseInt(hashString);
+
+        // Asegurarse de que el índice hash esté dentro del rango de la tabla
+        return hash % tableSize;
+    }
+
+    public int foldingSumMethodHash(int key, int tableSize) {
+        int sum = 0;
+        String keyString = String.valueOf(key);
+
+        // Dividir el valor de entrada en partes más pequeñas y sumarlas
+        for (int i = 0; i < keyString.length(); i += 2) {
+            int startIndex = i;
+            int endIndex = Math.min(i + 2, keyString.length());
+            String part = keyString.substring(startIndex, endIndex);
+            sum += Integer.parseInt(part);
+        }
+
+        // Tomar una parte de la suma como índice hash
+        String sumString = String.valueOf(sum);
+        int startIndex = (sumString.length() / 2) - (tableSize / 2);
+        int endIndex = startIndex + tableSize;
+        String hashString = sumString.substring(startIndex, endIndex);
+        int hash = Integer.parseInt(hashString);
+
+        // Asegurarse de que el índice hash esté dentro del rango de la tabla
+        return hash % tableSize;
     }
 
 }
