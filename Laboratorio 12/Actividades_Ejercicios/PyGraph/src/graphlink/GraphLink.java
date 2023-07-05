@@ -181,6 +181,97 @@ public class GraphLink<E> {
     }
 
     //--------------Fin Punto 4.5----------------------//
+    //--------------Ejercicio 1----------------------//    
+    public void bfs(E data) {
+        Vertex<E> startVertex = searchVertec(data);
+        if (startVertex == null) {
+            return;
+        }
+
+        initLabel();
+        bfs(startVertex);
+    }
+
+    private void bfs(Vertex<E> startVertex) {
+        Queue<Vertex<E>> queue = new LinkedList<>();
+        startVertex.setLabel(1);
+        queue.offer(startVertex);
+
+        while (!queue.isEmpty()) {
+            Vertex<E> currentVertex = queue.poll();
+            System.out.println(currentVertex.getData());
+
+            ListLinked<Edge<E>> adjList = currentVertex.listAdj;
+            Node<Edge<E>> edgeNode = adjList.getFirst();
+
+            while (edgeNode != null) {
+                Edge<E> currentEdge = edgeNode.getData();
+                Vertex<E> destinationVertex = currentEdge.getRefDest();
+
+                if (destinationVertex.getLabel() == 0) {
+                    destinationVertex.setLabel(1);
+                    queue.offer(destinationVertex);
+                }
+
+                edgeNode = edgeNode.getNext();
+            }
+        }
+    }
+
+    public ArrayList<Vertex<E>> bfsPath(E startData, E endData) {
+        Vertex<E> startVertex = searchVertec(startData);
+        Vertex<E> endVertex = searchVertec(endData);
+
+        if (startVertex == null || endVertex == null) {
+            System.out.println("Alguno de los vértices no existe ...");
+            return null;
+        }
+
+        initLabel();
+        ArrayList<Vertex<E>> path = bfsPath(startVertex, endVertex);
+
+        if (path.isEmpty()) {
+            System.out.println("No se encontró un camino entre los vértices especificados.");
+        }
+
+        return path;
+    }
+
+    private ArrayList<Vertex<E>> bfsPath(Vertex<E> startVertex, Vertex<E> endVertex) {
+        Queue<ArrayList<Vertex<E>>> queue = new LinkedList<>();
+        ArrayList<Vertex<E>> initialPath = new ArrayList<>();
+        initialPath.add(startVertex);
+        queue.offer(initialPath);
+
+        while (!queue.isEmpty()) {
+            ArrayList<Vertex<E>> currentPath = queue.poll();
+            Vertex<E> lastVertex = currentPath.get(currentPath.size() - 1);
+
+            if (lastVertex.equals(endVertex)) {
+                return currentPath;
+            }
+
+            ListLinked<Edge<E>> adjList = lastVertex.listAdj;
+            Node<Edge<E>> edgeNode = adjList.getFirst();
+
+            while (edgeNode != null) {
+                Edge<E> currentEdge = edgeNode.getData();
+                Vertex<E> destinationVertex = currentEdge.getRefDest();
+
+                if (!currentPath.contains(destinationVertex)) {
+                    ArrayList<Vertex<E>> newPath = new ArrayList<>(currentPath);
+                    newPath.add(destinationVertex);
+                    queue.offer(newPath);
+                }
+
+                edgeNode = edgeNode.getNext();
+            }
+        }
+
+        return new ArrayList<>(); // Si no se encontró un camino, se devuelve una lista vacía
+    }
+
+    //--------------Fin Ejercicio 1----------------------//
     //--------------Ejercicio 2----------------------//
     public void insertEdgeWeight(Vertex<E> v, Vertex<E> z, int weight) {
         ListLinked<Edge<E>> adjList = v.listAdj;

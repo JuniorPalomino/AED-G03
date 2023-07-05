@@ -6,17 +6,15 @@ package graphlink;
 
 import ListLinked.ListLinked;
 
-
-
-
 /**
  *
  * @author ADMIN
  */
-public class Vertex <E>{
+public class Vertex<E> {
+
     private E data;
     protected ListLinked<Edge<E>> listAdj;
-     private int label;  //0: unexplored    //1: visited
+    private int label;  //0: unexplored    //1: visited
 
     public Vertex(E data) {
         this.data = data;
@@ -35,12 +33,13 @@ public class Vertex <E>{
         this.label = label;
     }
 
-  
+    
+
     @Override
     public boolean equals(Object o) {
-        if(o instanceof Vertex<?>){
-            
-            Vertex<E> v =(Vertex<E>)o;
+        if (o instanceof Vertex<?>) {
+
+            Vertex<E> v = (Vertex<E>) o;
             return this.data.equals(v.data);
         }
         return false;
@@ -48,8 +47,7 @@ public class Vertex <E>{
 
     @Override
     public String toString() {
-        return this.data+"-->"+this.listAdj.toString()+"\n";
+        return this.data + "-->" + this.listAdj.toString() + "\n";
     }
-    
-    
+
 }
